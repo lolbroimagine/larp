@@ -1,0 +1,18 @@
+:root {
+    --bg-color: #000000;
+    --accent-color: #000000;
+    --img-border-color: var(--accent-color);
+    --btn-border-color: rgb(20, 20, 20);
+    --btn-bg: rgb(20 20 20 / 32%);
+    --text-color: #ffffff;
+    --text-color-light: #ffffff;
+    --btn-color: var(--text-color);
+    --ahref-color: var(--text-color);
+    --icon-color: var(--accent-color);
+    --icon-bg: rgb(255, 255, 255);
+    --btn-hover-bg: rgb(20 20 20 / 50%);
+    --btn-border: 2px solid var(--btn-border-color);
+    --img-border: 2px dashed var(--img-border-color);
+    --scroll-bar: var(--accent-color);
+    --selection: rgba(255, 255, 255, 0.705);
+}
