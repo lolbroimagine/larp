@@ -1,58 +1,90 @@
 <!DOCTYPE html>
 <html lang="en_US">
 
-<href="styles.css">
-<audio id="audio" src="https://files.catbox.moe/mx6jr6.mp3" autoplaystyle="display:none"></audio>
-<script>
-    const audio = document.getElementById('audio');
-      audio.volume = 0.8;
-</script>
-
-<script src="cursor.js"></script>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>larps.pics</title>
-    <meta name="description" content="">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>larps.pics</title>
+  <meta name="description" content="">
+  <script src="cursor.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    #click-to-enter {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    #main-content {
+      display: none;
+      opacity: 0;
+    }
+
+    #main-content.fade-in {
+      display: block;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .flexbox a {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
+  <audio id="audio" src="https://files.catbox.moe/mx6jr6.mp3"></audio>
+
+  <div id="click-to-enter">Click to Enter</div>
+
+  <div id="main-content">
     <main>
-        <img src="https://cdn.discordapp.com/avatars/1344477717692940328/e303842653181f9dbf462e0b75247593.webp?size=128">
-        <span id="who"><font color="white">niko</font></span>
-        <div class="flexbox">
-        <a href="https://discord.com/users/1344477717692940328"><font color="white">Discord</a> &nbsp;<a href="https://feds.pics"><font color="white">Site</a>
-        </div>
+      <img src="https://cdn.discordapp.com/avatars/1344477717692940328/e303842653181f9dbf462e0b75247593.webp?size=128">
+      <span id="who"><font color="white">niko</font></span>
+      <div class="flexbox">
+        <a href="https://discord.com/users/1344477717692940328">Discord</a> &nbsp;
+        <a href="https://feds.pics">Site</a>
+      </div>
     </main>
+  </div>
+
+  <script>
+    const enterScreen = document.getElementById('click-to-enter');
+    const mainContent = document.getElementById('main-content');
+    const audio = document.getElementById('audio');
+    audio.volume = 0.8;
+
+    enterScreen.addEventListener('click', () => {
+      enterScreen.style.display = 'none';
+      mainContent.classList.add('fade-in');
+      audio.play().catch(() => {
+        console.warn('Autoplay blocked until user interacts');
+      });
+    });
+  </script>
 </body>
-
-<script>
-    (function () {
-        const hoaAudio = document.getElementById('audio');
-
-        function catchHandler() {
-
-          let inputListener;
-          inputListener = function () {
-            hoaAudio.play();
-            document.removeEventListener('mousedown', inputListener);
-            document.removeEventListener('keydown', inputListener);
-          };
-
-          document.addEventListener('mousedown', inputListener);
-          document.addEventListener('keydown', inputListener);
-        }
-
-        if (hoaAudio.readyState > 1) {
-
-          hoaAudio.play().catch(catchHandler);
-        } else {
-
-          hoaAudio.addEventListener('canplay', function () {
-            hoaAudio.play().catch(catchHandler);
-          });
-        }
-      })();
-</script>
 
 </html>
