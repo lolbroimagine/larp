@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en_US">
+
+<href="styles.css">
+<audio id="audio" src="https://files.catbox.moe/mx6jr6.mp3" autoplaystyle="display:none"></audio>
+<script>
+    const audio = document.getElementById('audio');
+      audio.volume = 0.8;
+</script>
+
+<script src="cursor.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>larps.pics</title>
+    <meta name="description" content="">
+</head>
+<body>
+    <main>
+        <img src="https://media.discordapp.net/attachments/1225773531044909089/1248237502339485778/ba4b483a883e60caafe7b38702cb3e9f.png?ex=6662ef43&is=66619dc3&hm=93fe9d3a42f6105e148c634193a079abc5b0d1b7bf68a46432e92077125f58d9&=&format=webp&quality=lossless&width=350&height=350">
+        <span id="who"><font color="white">niko</font></span>
+        <div class="flexbox">
+        <a href="https://discord.com/users/1344477717692940328"><font color="white">Discord</a> &nbsp;<a href="https://feds.pics"><font color="white">Site</a>
+        </div>
+    </main>
+</body>
+
+<script>
+    (function () {
+        const hoaAudio = document.getElementById('audio');
+
+        function catchHandler() {
+
+          let inputListener;
+          inputListener = function () {
+            hoaAudio.play();
+            document.removeEventListener('mousedown', inputListener);
+            document.removeEventListener('keydown', inputListener);
+          };
+
+          document.addEventListener('mousedown', inputListener);
+          document.addEventListener('keydown', inputListener);
+        }
+
+        if (hoaAudio.readyState > 1) {
+
+          hoaAudio.play().catch(catchHandler);
+        } else {
+
+          hoaAudio.addEventListener('canplay', function () {
+            hoaAudio.play().catch(catchHandler);
+          });
+        }
+      })();
+</script>
+
+</html>
